@@ -6,11 +6,14 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bernardo.model.Objeto;
@@ -19,12 +22,14 @@ import com.bernardo.model.Objeto;
 @RequestMapping("/objeto")
 public class ObjetoController {
 	private static Map<Long,Objeto> objetos = new HashMap<Long,Objeto>();
+	
 	private static long ultimoId=0;
 	
 	private static Objeto addObjetoMap(Objeto obj){
 		if (obj.getId() == null){
 			obj.setId( Long.valueOf(++ultimoId));
 		}
+		
 		objetos.put(obj.getId(), obj);
 		return obj;
 	}
@@ -56,9 +61,14 @@ public class ObjetoController {
 	
 	@RequestMapping(path="{id}", method=RequestMethod.GET)
 	public Objeto getObjeto(@PathVariable Long id){		
-		Objeto obj = new Objeto(id,"Revista",new Long(123456789),"Teste 1","Autor 1","Editora 1");
+		Objeto obj = new Objeto(id,"Revista",new Long(123456789),"Teste 1","Autor 1","Editora 1","1");
 		
 		return obj;
+	}
+	
+	private boolean verifyOwnerCo(String codProprietario){
+		
+		return true;
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
@@ -82,10 +92,18 @@ public class ObjetoController {
 	}
 	
 	@RequestMapping(path="all")
-	public List<Objeto> listObjetos(){
-		List<Objeto> list = new ArrayList<Objeto>(ObjetoController.getListOfValueMap());
+	public List<Objeto> listObjetos(@RequestParam(name="codProprietario",required=false) String codProprietario){
+		List<Objeto> listAux = new ArrayList<Objeto>(ObjetoController.getListOfValueMap());
+		List<Objeto> list=null; 
+		
+		if (!StringUtils.isEmpty(codProprietario)){
+			list = listAux.stream()
+					.filter(o -> codProprietario.equals(o.getCodProprietario()))
+					.collect(Collectors.toList());
+		}else{
+			list=listAux;
+		}
 		
 		return list;
-	}
-	
+	}	
 }
