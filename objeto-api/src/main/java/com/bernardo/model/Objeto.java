@@ -8,12 +8,13 @@ public class Objeto {
 	private String titulo;
 	private String autor;
 	private String editora;
+	private String codProprietario;
 	
 	public Objeto(){
 		
 	}
 	
-	public Objeto(Long id, String tipo, Long isbn, String titulo, String autor, String editora) {
+	public Objeto(Long id, String tipo, Long isbn, String titulo, String autor, String editora, String codProprietario) {
 		super();
 		this.id = id;
 		this.tipo = tipo;
@@ -21,6 +22,7 @@ public class Objeto {
 		this.titulo = titulo;
 		this.autor = autor;
 		this.editora = editora;
+		this.codProprietario = codProprietario;
 	}
 	
 	/**
@@ -96,6 +98,14 @@ public class Objeto {
 	 */
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	public String getCodProprietario() {
+		return codProprietario;
+	}
+
+	public void setCodProprietario(String codProprietario) {
+		this.codProprietario = codProprietario;
 	}
 
 }
