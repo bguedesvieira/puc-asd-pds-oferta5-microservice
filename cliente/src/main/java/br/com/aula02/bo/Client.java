@@ -6,7 +6,8 @@ public class Client {
 	private String name;
 	private String phone;
 	private String address;
-
+	
+	
 	@Override
 	public boolean equals(Object obj) {
 		Client client = (Client) obj;
