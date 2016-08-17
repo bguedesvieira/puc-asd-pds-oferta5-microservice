@@ -3,9 +3,9 @@ package com.aula02.api.controller;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
@@ -28,7 +28,7 @@ import com.aula02.model.Objeto;
 @RestController
 @RequestMapping("/objeto")
 public class ObjetoController {
-	private static Map<Long,Objeto> objetos = new HashMap<Long,Objeto>();
+	private static Map<Long,Objeto> objetos = new ConcurrentHashMap<Long,Objeto>();
 	
 	private static long ultimoId=0;
 	
