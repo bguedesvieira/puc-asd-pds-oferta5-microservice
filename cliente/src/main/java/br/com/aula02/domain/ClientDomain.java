@@ -2,6 +2,7 @@ package br.com.aula02.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import br.com.aula02.bo.Client;
@@ -9,7 +10,7 @@ import br.com.aula02.exception.ClientServiceException;
 
 public class ClientDomain {
 	
-	private static ConcurrentHashMap<String, Client> clientMap = new ConcurrentHashMap<String, Client>();
+	private static Map<String, Client> clientMap = new ConcurrentHashMap<String, Client>();
 	
 	public static void addClient(Client client) throws ClientServiceException{
 		if(client == null || isBlank(client.getRegistrationId())){

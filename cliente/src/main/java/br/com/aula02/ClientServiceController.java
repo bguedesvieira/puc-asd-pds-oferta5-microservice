@@ -25,7 +25,7 @@ import br.com.aula02.response.FindResponse;
 @RestController
 @EnableAutoConfiguration
 @RequestMapping("/client")
-public class ClientMicroService {
+public class ClientServiceController {
 	
 	@ExceptionHandler(ClientServiceException.class)
 	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
@@ -81,6 +81,6 @@ public class ClientMicroService {
     }
 
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(ClientMicroService.class, args);
+        SpringApplication.run(ClientServiceController.class, args);
     }
 }

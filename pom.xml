@@ -43,6 +43,7 @@
 		<module>objeto-api</module>
 		<module>emprestimo-api</module>
 		<module>cliente</module>
+		<module>social-api</module>
 	</modules>
 	
 	

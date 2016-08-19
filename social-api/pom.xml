@@ -4,16 +4,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.aula02</groupId>
-    <artifactId>cliente-api</artifactId>
+    <artifactId>social-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Cliente API</name>
-  	<description>Cliente API</description>
+    <name>Social API</name>
+  	<description>Social API</description>
 
     <!-- Inherit defaults from Spring Boot -->
     <parent>
       <groupId>com.aula02</groupId>
       <artifactId>sebo-project</artifactId>
-      <version>1.0.0</version>
+      <version>1.4.0.BUILD-SNAPSHOT</version>
     </parent>
  
 
